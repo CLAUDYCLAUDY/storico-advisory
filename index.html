@@ -22,99 +22,119 @@
 html { scroll-behavior: smooth; }
 body { background: var(--navy); color: var(--text); font-family: 'Cormorant Garamond', Georgia, serif; min-height: 100vh; overflow-x: hidden; }
 
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 24px 48px; background: rgba(14,18,32,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(90,122,84,0.15); }
+/* NAV */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: rgba(14,18,32,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(90,122,84,0.15); }
 .logo-mark { position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 10px 18px; cursor: pointer; text-decoration: none; }
 .logo-mark::before { content: ''; position: absolute; inset: 0; border: 1.5px solid var(--green); }
 .logo-mark::after { content: ''; position: absolute; inset: 3px; border: 1px solid rgba(90,122,84,0.4); }
 .logo-mark-inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 1px; }
-.logo-line1, .logo-line2, .logo-line3 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 13px; font-weight: 400; letter-spacing: 3px; color: var(--green-light); line-height: 1.2; }
+.logo-line { font-family: 'Cormorant Garamond', serif; font-size: 12px; font-weight: 400; letter-spacing: 3px; color: var(--green-light); line-height: 1.3; }
 .nav-links { display: flex; gap: 36px; list-style: none; }
 .nav-links a { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 300; transition: color 0.3s; }
 .nav-links a:hover { color: var(--green-light); }
-.nav-lang { font-size: 10px; letter-spacing: 2px; color: var(--text-muted); font-family: 'Montserrat', sans-serif; cursor: pointer; }
-.nav-lang span { color: var(--green); }
+.nav-lang { font-size: 10px; letter-spacing: 2px; color: var(--text-muted); font-family: 'Montserrat', sans-serif; cursor: pointer; user-select: none; }
+.nav-lang .active { color: var(--green); }
+.nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.nav-burger span { display: block; width: 22px; height: 1px; background: var(--green-light); }
+.mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--navy); z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 14px; letter-spacing: 5px; text-transform: uppercase; color: var(--text); text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 300; }
+.mobile-menu-close { position: absolute; top: 28px; right: 28px; font-size: 24px; color: var(--text-muted); cursor: pointer; font-family: 'Montserrat', sans-serif; font-weight: 300; }
 
-#hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 48px 80px; position: relative; overflow: hidden; }
-#hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; }
-.hero-ornament { width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, var(--green), transparent); margin: 0 auto 40px; }
-.hero-logo-frame { position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 52px 80px; margin-bottom: 48px; }
+/* HERO */
+#hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 24px 80px; position: relative; }
+.hero-ornament { width: 1px; height: 50px; background: linear-gradient(to bottom, transparent, var(--green), transparent); margin: 0 auto 36px; }
+.hero-logo-frame { position: relative; display: inline-flex; align-items: center; justify-content: center; padding: 44px 72px; margin-bottom: 40px; }
 .hero-logo-frame::before { content: ''; position: absolute; inset: 0; border: 1.5px solid var(--green); }
 .hero-logo-frame::after { content: ''; position: absolute; inset: 6px; border: 1px solid rgba(90,122,84,0.35); }
 .hero-logo-text { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
-.hero-logo-line { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 52px; font-weight: 300; letter-spacing: 4px; color: var(--green-light); line-height: 1.1; }
-.hero-location { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--text-muted); font-family: 'Montserrat', sans-serif; margin-bottom: 32px; }
-.hero-tagline { font-size: 22px; font-weight: 300; font-style: italic; color: rgba(216,212,204,0.7); line-height: 1.8; max-width: 560px; margin-bottom: 48px; }
+.hero-logo-line { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 300; letter-spacing: 4px; color: var(--green-light); line-height: 1.1; }
+.hero-location { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--text-muted); font-family: 'Montserrat', sans-serif; margin-bottom: 28px; }
+.hero-tagline { font-size: 20px; font-weight: 300; font-style: italic; color: rgba(216,212,204,0.7); line-height: 1.8; max-width: 500px; margin-bottom: 44px; }
 .hero-cta { display: inline-block; border: 1px solid var(--green); padding: 14px 40px; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--green); text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 300; transition: all 0.3s; }
 .hero-cta:hover { background: var(--green); color: var(--navy); }
-.hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.hero-scroll { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; }
 .hero-scroll span { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); font-family: 'Montserrat', sans-serif; }
-.hero-scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--green), transparent); animation: scrollPulse 2s ease-in-out infinite; }
-@keyframes scrollPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+.hero-scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--green), transparent); animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{opacity:0.3;} 50%{opacity:1;} }
 
-section { padding: 100px 48px; max-width: 1100px; margin: 0 auto; width: 100%; }
-.section-header { display: flex; align-items: center; gap: 24px; margin-bottom: 64px; }
-.section-header::before, .section-header::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-.section-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--green); font-family: 'Montserrat', sans-serif; font-weight: 300; white-space: nowrap; }
+/* SECTIONS */
+.s { padding: 80px 48px; max-width: 1100px; margin: 0 auto; width: 100%; }
+.s-header { display: flex; align-items: center; gap: 24px; margin-bottom: 56px; }
+.s-header::before, .s-header::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.s-label { font-size: 10px; letter-spacing: 5px; text-transform: uppercase; color: var(--green); font-family: 'Montserrat', sans-serif; font-weight: 300; white-space: nowrap; }
+.s-border { border-top: 1px solid var(--border); }
 
-#expertise { border-top: 1px solid var(--border); }
-.expertise-intro { text-align: center; font-size: 28px; font-weight: 300; font-style: italic; color: var(--text); line-height: 1.7; max-width: 680px; margin: 0 auto 80px; }
+/* EXPERTISE */
+.expertise-intro { text-align: center; font-size: 24px; font-weight: 300; font-style: italic; color: var(--text); line-height: 1.7; max-width: 640px; margin: 0 auto 64px; }
 .expertise-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
-.expertise-item { background: var(--navy); padding: 48px 24px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; transition: background 0.3s; }
+.expertise-item { background: var(--navy); padding: 40px 20px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; transition: background 0.3s; }
 .expertise-item:hover { background: var(--navy-light); }
-.expertise-icon { width: 48px; height: 48px; stroke: var(--green); fill: none; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; }
-.expertise-name { font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.5; }
-.expertise-desc { font-size: 13px; font-style: italic; color: var(--text-muted); line-height: 1.7; }
+.expertise-icon { width: 44px; height: 44px; stroke: var(--green); fill: none; stroke-width: 1; stroke-linecap: round; stroke-linejoin: round; }
+.expertise-name { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 300; line-height: 1.6; }
+.expertise-desc { font-size: 12px; font-style: italic; color: var(--text-muted); line-height: 1.7; }
 
-#approach { border-top: 1px solid var(--border); }
-.approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-.approach-text h2 { font-size: 36px; font-weight: 300; color: var(--text); line-height: 1.4; margin-bottom: 32px; }
+/* APPROACH */
+.approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.approach-text h2 { font-size: 34px; font-weight: 300; color: var(--text); line-height: 1.4; margin-bottom: 28px; }
 .approach-text h2 em { color: var(--green-light); font-style: italic; }
-.approach-text p { font-size: 16px; font-weight: 300; color: var(--text-muted); line-height: 2; margin-bottom: 20px; }
-.approach-pillars { display: flex; flex-direction: column; }
-.pillar { display: flex; align-items: flex-start; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border); }
+.approach-text p { font-size: 15px; font-weight: 300; color: var(--text-muted); line-height: 2; margin-bottom: 16px; }
+.pillar { display: flex; align-items: flex-start; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--border); }
 .pillar:first-child { border-top: 1px solid var(--border); }
-.pillar-num { font-size: 11px; letter-spacing: 2px; color: var(--green); font-family: 'Montserrat', sans-serif; font-weight: 300; padding-top: 4px; flex-shrink: 0; }
-.pillar-content h3 { font-size: 14px; letter-spacing: 3px; text-transform: uppercase; color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 300; margin-bottom: 8px; }
-.pillar-content p { font-size: 14px; font-style: italic; color: var(--text-muted); line-height: 1.7; }
+.pillar-num { font-size: 10px; letter-spacing: 2px; color: var(--green); font-family: 'Montserrat', sans-serif; font-weight: 300; padding-top: 4px; flex-shrink: 0; width: 24px; }
+.pillar-content h3 { font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 300; margin-bottom: 6px; }
+.pillar-content p { font-size: 13px; font-style: italic; color: var(--text-muted); line-height: 1.7; }
 
-#contact { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
-.contact-info h2 { font-size: 36px; font-weight: 300; font-style: italic; color: var(--text); line-height: 1.4; margin-bottom: 24px; }
-.contact-info p { font-size: 15px; font-weight: 300; color: var(--text-muted); line-height: 2; margin-bottom: 40px; }
-.contact-detail { display: flex; flex-direction: column; gap: 16px; }
-.contact-detail-item { display: flex; gap: 16px; align-items: flex-start; }
-.contact-detail-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--green); font-family: 'Montserrat', sans-serif; font-weight: 300; padding-top: 3px; min-width: 60px; }
-.contact-detail-value { font-size: 14px; color: var(--text-muted); font-style: italic; }
-.contact-form { display: flex; flex-direction: column; gap: 2px; }
-.form-group input, .form-group select, .form-group textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid var(--border); color: var(--text); font-size: 15px; font-family: 'Cormorant Garamond', serif; font-style: italic; padding: 18px 0; outline: none; transition: border-color 0.3s; -webkit-appearance: none; }
-.form-group select { font-style: normal; font-size: 14px; font-family: 'Montserrat', sans-serif; font-weight: 300; color: var(--text-muted); background: transparent; }
-.form-group select option { background: var(--navy-mid); color: var(--text); }
-.form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-muted); font-style: italic; }
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-bottom-color: var(--green); }
-.form-group textarea { min-height: 100px; resize: none; }
-.form-submit { margin-top: 32px; border: 1px solid var(--green); background: transparent; color: var(--green); padding: 16px 40px; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; font-weight: 300; cursor: pointer; transition: all 0.3s; width: 100%; }
+/* CONTACT */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.contact-info h2 { font-size: 34px; font-weight: 300; font-style: italic; color: var(--text); line-height: 1.4; margin-bottom: 20px; }
+.contact-info p { font-size: 14px; font-weight: 300; color: var(--text-muted); line-height: 2; margin-bottom: 36px; }
+.contact-detail { display: flex; flex-direction: column; gap: 14px; }
+.contact-row { display: flex; gap: 16px; }
+.contact-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--green); font-family: 'Montserrat', sans-serif; font-weight: 300; padding-top: 2px; min-width: 56px; flex-shrink: 0; }
+.contact-value { font-size: 13px; color: var(--text-muted); font-style: italic; }
+.contact-form { display: flex; flex-direction: column; gap: 0; }
+.form-row { border-bottom: 1px solid var(--border); }
+.form-row input, .form-row select, .form-row textarea { width: 100%; background: transparent; border: none; color: var(--text); font-size: 15px; font-family: 'Cormorant Garamond', serif; font-style: italic; padding: 16px 0; outline: none; transition: color 0.3s; -webkit-appearance: none; }
+.form-row select { font-style: normal; font-size: 13px; font-family: 'Montserrat', sans-serif; font-weight: 300; color: var(--text-muted); background: transparent; cursor: pointer; }
+.form-row select option { background: var(--navy-mid); color: var(--text); }
+.form-row input::placeholder, .form-row textarea::placeholder { color: var(--text-muted); font-style: italic; }
+.form-row input:focus, .form-row select:focus, .form-row textarea:focus { color: var(--text); }
+.form-row textarea { min-height: 90px; resize: none; }
+.form-submit { margin-top: 28px; border: 1px solid var(--green); background: transparent; color: var(--green); padding: 15px; font-size: 10px; letter-spacing: 4px; text-transform: uppercase; font-family: 'Montserrat', sans-serif; font-weight: 300; cursor: pointer; transition: all 0.3s; width: 100%; }
 .form-submit:hover { background: var(--green); color: var(--navy); }
-.form-note { font-size: 11px; color: var(--text-muted); font-style: italic; text-align: center; margin-top: 16px; line-height: 1.6; }
+.form-note { font-size: 11px; color: var(--text-muted); font-style: italic; text-align: center; margin-top: 14px; line-height: 1.6; }
 
-footer { padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
-.footer-logo { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--text-muted); }
-.footer-copy { font-size: 10px; letter-spacing: 2px; color: var(--text-muted); font-family: 'Montserrat', sans-serif; font-weight: 300; opacity: 0.5; }
-.footer-links { display: flex; gap: 24px; }
-.footer-links a { font-size: 10px; letter-spacing: 2px; color: var(--text-muted); text-decoration: none; font-family: 'Montserrat', sans-serif; font-weight: 300; opacity: 0.5; }
-.footer-links a:hover { opacity: 1; }
+/* FOOTER */
+footer { padding: 36px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); }
+.footer-name { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: var(--text-muted); opacity: 0.6; }
+.footer-copy { font-size: 10px; letter-spacing: 2px; color: var(--text-muted); font-family: 'Montserrat', sans-serif; opacity: 0.4; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-size: 10px; letter-spacing: 2px; color: var(--text-muted); text-decoration: none; font-family: 'Montserrat', sans-serif; opacity: 0.4; }
 
+/* MOBILE */
 @media (max-width: 768px) {
-  nav { padding: 20px 24px; }
+  nav { padding: 16px 20px; }
   .nav-links { display: none; }
-  #hero { padding: 100px 24px 80px; }
-  .hero-logo-frame { padding: 28px 36px; }
-  .hero-logo-line { font-size: 32px; }
-  section { padding: 60px 24px; }
-  .expertise-grid { grid-template-columns: 1fr 1fr; }
+  .nav-burger { display: flex; }
+  #hero { padding: 100px 20px 70px; }
+  .hero-logo-frame { padding: 28px 32px; }
+  .hero-logo-line { font-size: 30px; letter-spacing: 3px; }
+  .hero-tagline { font-size: 17px; }
+  .s { padding: 60px 20px; }
+  .expertise-grid { grid-template-columns: 1fr 1fr; gap: 1px; }
   .expertise-item:last-child { grid-column: span 2; }
-  .approach-grid { grid-template-columns: 1fr; gap: 40px; }
-  .contact-wrapper { grid-template-columns: 1fr; gap: 48px; }
-  footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+  .expertise-item { padding: 28px 14px; }
+  .approach-grid { grid-template-columns: 1fr; gap: 44px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 20px; }
+  .footer-links { justify-content: center; }
+}
+@media (max-width: 480px) {
+  .hero-logo-line { font-size: 24px; letter-spacing: 2px; }
+  .hero-logo-frame { padding: 22px 24px; }
+  .expertise-grid { grid-template-columns: 1fr; }
+  .expertise-item:last-child { grid-column: span 1; }
 }
 </style>
 </head>
@@ -123,20 +143,31 @@ footer { padding: 40px 48px; display: flex; justify-content: space-between; alig
 <nav>
   <a href="#" class="logo-mark">
     <div class="logo-mark-inner">
-      <div class="logo-line1">Storico</div>
-      <div class="logo-line2">Collectibles</div>
-      <div class="logo-line3">Advisory.</div>
+      <div class="logo-line">Storico</div>
+      <div class="logo-line">Collectibles</div>
+      <div class="logo-line">Advisory.</div>
     </div>
   </a>
   <ul class="nav-links">
-    <li><a href="#expertise">Expertise</a></li>
-    <li><a href="#approach">Approach</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#expertise" data-en="Expertise" data-fr="Expertise">Expertise</a></li>
+    <li><a href="#approach" data-en="Approach" data-fr="Approche">Approach</a></li>
+    <li><a href="#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
   </ul>
-  <div class="nav-lang"><span>EN</span> · FR</div>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <div class="nav-lang" onclick="toggleLang()"><span class="active" id="lang-en">EN</span> · <span id="lang-fr">FR</span></div>
+    <div class="nav-burger" onclick="openMenu()"><span></span><span></span><span></span></div>
+  </div>
 </nav>
 
-<section id="hero" style="padding-top:0; padding-bottom:0; max-width:none;">
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-close" onclick="closeMenu()">×</div>
+  <a href="#expertise" onclick="closeMenu()" data-en="Expertise" data-fr="Expertise">Expertise</a>
+  <a href="#approach" onclick="closeMenu()" data-en="Approach" data-fr="Approche">Approach</a>
+  <a href="#contact" onclick="closeMenu()" data-en="Contact" data-fr="Contact">Contact</a>
+  <div class="nav-lang" onclick="toggleLang();closeMenu()"><span class="active" id="lang-en-m">EN</span> · <span id="lang-fr-m">FR</span></div>
+</div>
+
+<section id="hero" style="max-width:none;padding-left:24px;padding-right:24px;">
   <div class="hero-ornament"></div>
   <div class="hero-logo-frame">
     <div class="hero-logo-text">
@@ -146,113 +177,150 @@ footer { padding: 40px 48px; display: flex; justify-content: space-between; alig
     </div>
   </div>
   <div class="hero-location">Palais la Scala &nbsp;·&nbsp; Monte Carlo</div>
-  <div class="hero-tagline">Where rare assets meet<br>the precision of law.</div>
-  <a href="#contact" class="hero-cta">Private Enquiry</a>
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="hero-scroll-line"></div>
-  </div>
+  <div class="hero-tagline" data-en="Where rare assets meet<br>the precision of law." data-fr="Là où les actifs rares rencontrent<br>la précision du droit.">Where rare assets meet<br>the precision of law.</div>
+  <a href="#contact" class="hero-cta" data-en="Private Enquiry" data-fr="Demande confidentielle">Private Enquiry</a>
+  <div class="hero-scroll"><span data-en="Scroll" data-fr="Défiler">Scroll</span><div class="hero-scroll-line"></div></div>
 </section>
 
-<section id="expertise">
-  <div class="section-header"><div class="section-label">Our Expertise</div></div>
-  <div class="expertise-intro">From first contact to final acquisition — every transaction is handled with legal precision and absolute discretion.</div>
+<div class="s-border">
+<div class="s" id="expertise">
+  <div class="s-header"><div class="s-label" data-en="Our Expertise" data-fr="Notre Expertise">Our Expertise</div></div>
+  <div class="expertise-intro" data-en="From first contact to final acquisition — every transaction is handled with legal precision and absolute discretion." data-fr="Du premier contact à l'acquisition finale — chaque transaction est traitée avec rigueur juridique et discrétion absolue.">From first contact to final acquisition — every transaction is handled with legal precision and absolute discretion.</div>
   <div class="expertise-grid">
     <div class="expertise-item">
       <svg class="expertise-icon" viewBox="0 0 64 64"><path d="M8 44 L18 24 L46 24 L56 44 L56 50 L8 50 Z"/><circle cx="20" cy="50" r="5"/><circle cx="44" cy="50" r="5"/><path d="M26 24 L22 34 M38 24 L42 34"/><line x1="18" y1="34" x2="46" y2="34"/></svg>
-      <div class="expertise-name">Collector<br>Vehicles</div>
-      <div class="expertise-desc">Acquisition, due diligence & ownership structuring</div>
+      <div class="expertise-name" data-en="Collector Vehicles" data-fr="Véhicules de Collection">Collector<br>Vehicles</div>
+      <div class="expertise-desc" data-en="Acquisition, due diligence & ownership structuring" data-fr="Acquisition, audit & structuration de la propriété">Acquisition, due diligence & ownership structuring</div>
     </div>
     <div class="expertise-item">
       <svg class="expertise-icon" viewBox="0 0 64 64"><rect x="10" y="12" width="44" height="36" rx="1"/><rect x="16" y="18" width="32" height="24" rx="1"/><line x1="32" y1="48" x2="32" y2="54"/><line x1="22" y1="54" x2="42" y2="54"/></svg>
-      <div class="expertise-name">Fine<br>Art</div>
-      <div class="expertise-desc">Authentication, valuation & legal transfer</div>
+      <div class="expertise-name" data-en="Fine Art" data-fr="Beaux-Arts">Fine<br>Art</div>
+      <div class="expertise-desc" data-en="Authentication, valuation & legal transfer" data-fr="Authentification, valorisation & transfert juridique">Authentication, valuation & legal transfer</div>
     </div>
     <div class="expertise-item">
       <svg class="expertise-icon" viewBox="0 0 64 64"><circle cx="32" cy="32" r="20"/><circle cx="32" cy="32" r="14"/><circle cx="32" cy="32" r="3"/><line x1="32" y1="18" x2="32" y2="24"/><line x1="32" y1="40" x2="32" y2="46"/><line x1="18" y1="32" x2="24" y2="32"/><line x1="40" y1="32" x2="46" y2="32"/><line x1="32" y1="29" x2="32" y2="32"/><line x1="32" y1="32" x2="38" y2="28"/></svg>
-      <div class="expertise-name">Fine<br>Watches</div>
-      <div class="expertise-desc">Expert sourcing, provenance & transaction advisory</div>
+      <div class="expertise-name" data-en="Fine Watches" data-fr="Montres de Prestige">Fine<br>Watches</div>
+      <div class="expertise-desc" data-en="Expert sourcing, provenance & transaction advisory" data-fr="Sourcing expert, provenance & conseil transactionnel">Expert sourcing, provenance & transaction advisory</div>
     </div>
     <div class="expertise-item">
       <svg class="expertise-icon" viewBox="0 0 64 64"><path d="M8 44 C8 36 56 36 56 44"/><path d="M12 44 L10 50 L54 50 L52 44"/><path d="M14 36 C14 24 50 24 50 36"/><ellipse cx="32" cy="24" rx="12" ry="4"/></svg>
-      <div class="expertise-name">Yachts &<br>Vessels</div>
-      <div class="expertise-desc">From shipyard to acquisition — full legal coverage</div>
+      <div class="expertise-name" data-en="Yachts & Vessels" data-fr="Yachts & Navires">Yachts &<br>Vessels</div>
+      <div class="expertise-desc" data-en="From shipyard to acquisition — full legal coverage" data-fr="Du chantier naval à l'acquisition — couverture juridique complète">From shipyard to acquisition — full legal coverage</div>
     </div>
     <div class="expertise-item">
       <svg class="expertise-icon" viewBox="0 0 64 64"><rect x="10" y="16" width="44" height="32" rx="2"/><line x1="10" y1="26" x2="54" y2="26"/><circle cx="32" cy="38" r="6"/><path d="M26 38 C26 32 38 32 38 38"/></svg>
-      <div class="expertise-name">Legal &<br>Structuring</div>
-      <div class="expertise-desc">Company formation, tax coordination & wealth planning</div>
+      <div class="expertise-name" data-en="Legal & Structuring" data-fr="Juridique & Structuration">Legal &<br>Structuring</div>
+      <div class="expertise-desc" data-en="Company formation, tax coordination & wealth planning" data-fr="Création de sociétés, coordination fiscale & gestion patrimoniale">Company formation, tax coordination & wealth planning</div>
     </div>
   </div>
-</section>
+</div>
+</div>
 
-<section id="approach">
-  <div class="section-header"><div class="section-label">Our Approach</div></div>
+<div class="s-border">
+<div class="s" id="approach">
+  <div class="s-header"><div class="s-label" data-en="Our Approach" data-fr="Notre Approche">Our Approach</div></div>
   <div class="approach-grid">
     <div class="approach-text">
-      <h2>Advisory beyond<br><em>the transaction.</em></h2>
-      <p>Storico Collectibles Advisory operates at the intersection of passion and rigour. We advise private clients, family offices and institutions on the acquisition, structuring and legal protection of rare and exceptional assets.</p>
-      <p>Based in Monte Carlo, we serve a discreet international clientele with a single standard: excellence.</p>
+      <h2 data-en="Advisory beyond<br><em>the transaction.</em>" data-fr="Un conseil qui dépasse<br><em>la transaction.</em>">Advisory beyond<br><em>the transaction.</em></h2>
+      <p data-en="Storico Collectibles Advisory operates at the intersection of passion and rigour. We advise private clients, family offices and institutions on the acquisition, structuring and legal protection of rare and exceptional assets." data-fr="Storico Collectibles Advisory opère à l'intersection de la passion et de la rigueur. Nous conseillons des clients privés, des family offices et des institutions sur l'acquisition, la structuration et la protection juridique d'actifs rares et d'exception.">Storico Collectibles Advisory operates at the intersection of passion and rigour. We advise private clients, family offices and institutions on the acquisition, structuring and legal protection of rare and exceptional assets.</p>
+      <p data-en="Based in Monte Carlo, we serve a discreet international clientele with a single standard: excellence." data-fr="Basés à Monte Carlo, nous servons une clientèle internationale discrète avec un seul standard : l'excellence.">Based in Monte Carlo, we serve a discreet international clientele with a single standard: excellence.</p>
     </div>
-    <div class="approach-pillars">
-      <div class="pillar"><div class="pillar-num">01</div><div class="pillar-content"><h3>Discretion</h3><p>Every mandate is handled under strict confidentiality. No public listings, no intermediaries without consent.</p></div></div>
-      <div class="pillar"><div class="pillar-num">02</div><div class="pillar-content"><h3>Precision</h3><p>Legal expertise applied to every detail — from title verification to cross-border structuring.</p></div></div>
-      <div class="pillar"><div class="pillar-num">03</div><div class="pillar-content"><h3>Independence</h3><p>We represent the client exclusively. No conflicts of interest, no hidden commissions.</p></div></div>
-      <div class="pillar"><div class="pillar-num">04</div><div class="pillar-content"><h3>Network</h3><p>Access to a curated network of specialists — experts, restorers, auction houses and private sellers worldwide.</p></div></div>
+    <div>
+      <div class="pillar"><div class="pillar-num">01</div><div class="pillar-content"><h3 data-en="Discretion" data-fr="Discrétion">Discretion</h3><p data-en="Every mandate is handled under strict confidentiality. No public listings, no intermediaries without consent." data-fr="Chaque mandat est traité sous stricte confidentialité. Aucune annonce publique, aucun intermédiaire sans consentement.">Every mandate is handled under strict confidentiality. No public listings, no intermediaries without consent.</p></div></div>
+      <div class="pillar"><div class="pillar-num">02</div><div class="pillar-content"><h3 data-en="Precision" data-fr="Précision">Precision</h3><p data-en="Legal expertise applied to every detail — from title verification to cross-border structuring." data-fr="L'expertise juridique appliquée à chaque détail — de la vérification des titres à la structuration transfrontalière.">Legal expertise applied to every detail — from title verification to cross-border structuring.</p></div></div>
+      <div class="pillar"><div class="pillar-num">03</div><div class="pillar-content"><h3 data-en="Independence" data-fr="Indépendance">Independence</h3><p data-en="We represent the client exclusively. No conflicts of interest, no hidden commissions." data-fr="Nous représentons exclusivement le client. Aucun conflit d'intérêts, aucune commission cachée.">We represent the client exclusively. No conflicts of interest, no hidden commissions.</p></div></div>
+      <div class="pillar"><div class="pillar-num">04</div><div class="pillar-content"><h3 data-en="Network" data-fr="Réseau">Network</h3><p data-en="Access to a curated network of specialists — experts, restorers, auction houses and private sellers worldwide." data-fr="Accès à un réseau sélectionné de spécialistes — experts, restaurateurs, maisons de vente et vendeurs privés dans le monde entier.">Access to a curated network of specialists — experts, restorers, auction houses and private sellers worldwide.</p></div></div>
     </div>
   </div>
-</section>
+</div>
+</div>
 
-<section id="contact">
-  <div class="section-header"><div class="section-label">Private Enquiry</div></div>
-  <div class="contact-wrapper">
+<div class="s-border">
+<div class="s" id="contact">
+  <div class="s-header"><div class="s-label" data-en="Private Enquiry" data-fr="Demande Confidentielle">Private Enquiry</div></div>
+  <div class="contact-grid">
     <div class="contact-info">
-      <h2>A conversation<br>begins here.</h2>
-      <p>All enquiries are treated with the utmost discretion. Our team will respond personally within 24 hours.</p>
+      <h2 data-en="A conversation<br>begins here." data-fr="Une conversation<br>commence ici.">A conversation<br>begins here.</h2>
+      <p data-en="All enquiries are treated with the utmost discretion. Our team will respond personally within 24 hours." data-fr="Toutes les demandes sont traitées avec la plus grande discrétion. Notre équipe vous répondra personnellement sous 24 heures.">All enquiries are treated with the utmost discretion. Our team will respond personally within 24 hours.</p>
       <div class="contact-detail">
-        <div class="contact-detail-item"><div class="contact-detail-label">Location</div><div class="contact-detail-value">Palais la Scala, Avenue Henry Dunant, Monte Carlo</div></div>
-        <div class="contact-detail-item"><div class="contact-detail-label">Email</div><div class="contact-detail-value">contact@storicocollectiblesadvisory.com</div></div>
-        <div class="contact-detail-item"><div class="contact-detail-label">By appt.</div><div class="contact-detail-value">Monaco · Paris · London · Geneva</div></div>
+        <div class="contact-row"><div class="contact-label" data-en="Location" data-fr="Adresse">Location</div><div class="contact-value">Palais la Scala, Avenue Henry Dunant, Monte Carlo</div></div>
+        <div class="contact-row"><div class="contact-label" data-en="Email" data-fr="Email">Email</div><div class="contact-value">contact@storicocollectiblesadvisory.com</div></div>
+        <div class="contact-row"><div class="contact-label" data-en="By appt." data-fr="Sur RDV">By appt.</div><div class="contact-value">Monaco · Paris · London · Geneva</div></div>
       </div>
     </div>
     <form class="contact-form" onsubmit="handleSubmit(event)">
-      <div class="form-group"><input type="text" placeholder="Full name" required /></div>
-      <div class="form-group"><input type="email" placeholder="Email address" required /></div>
-      <div class="form-group"><input type="text" placeholder="Organisation (optional)" /></div>
-      <div class="form-group">
+      <div class="form-row"><input type="text" data-placeholder-en="Full name" data-placeholder-fr="Nom complet" placeholder="Full name" required /></div>
+      <div class="form-row"><input type="email" data-placeholder-en="Email address" data-placeholder-fr="Adresse email" placeholder="Email address" required /></div>
+      <div class="form-row"><input type="text" data-placeholder-en="Organisation (optional)" data-placeholder-fr="Organisation (optionnel)" placeholder="Organisation (optional)" /></div>
+      <div class="form-row">
         <select>
-          <option value="" disabled selected>Area of interest</option>
-          <option>Collector Vehicles</option>
-          <option>Fine Art</option>
-          <option>Fine Watches</option>
-          <option>Yachts & Vessels</option>
-          <option>Legal & Structuring</option>
-          <option>Other</option>
+          <option value="" disabled selected data-en="Area of interest" data-fr="Domaine d'intérêt">Area of interest</option>
+          <option data-en="Collector Vehicles" data-fr="Véhicules de Collection">Collector Vehicles</option>
+          <option data-en="Fine Art" data-fr="Beaux-Arts">Fine Art</option>
+          <option data-en="Fine Watches" data-fr="Montres de Prestige">Fine Watches</option>
+          <option data-en="Yachts & Vessels" data-fr="Yachts & Navires">Yachts & Vessels</option>
+          <option data-en="Legal & Structuring" data-fr="Juridique & Structuration">Legal & Structuring</option>
+          <option data-en="Other" data-fr="Autre">Other</option>
         </select>
       </div>
-      <div class="form-group"><textarea placeholder="Describe your project or enquiry..." rows="4"></textarea></div>
-      <button type="submit" class="form-submit">Submit Enquiry</button>
-      <div class="form-note">All information shared is treated in strict confidence and will not be disclosed to third parties.</div>
+      <div class="form-row"><textarea data-placeholder-en="Describe your project or enquiry..." data-placeholder-fr="Décrivez votre projet ou votre demande..." placeholder="Describe your project or enquiry..." rows="4"></textarea></div>
+      <button type="submit" class="form-submit" data-en="Submit Enquiry" data-fr="Soumettre la demande">Submit Enquiry</button>
+      <div class="form-note" data-en="All information shared is treated in strict confidence and will not be disclosed to third parties." data-fr="Toutes les informations partagées sont traitées avec la plus stricte confidentialité et ne seront pas divulguées à des tiers.">All information shared is treated in strict confidence and will not be disclosed to third parties.</div>
     </form>
   </div>
-</section>
+</div>
+</div>
 
 <footer>
-  <div class="footer-logo">Storico Collectibles Advisory</div>
+  <div class="footer-name">Storico Collectibles Advisory</div>
   <div class="footer-copy">© 2025 · Monte Carlo</div>
-  <div class="footer-links"><a href="#">Privacy</a><a href="#">Legal Notice</a></div>
+  <div class="footer-links"><a href="#" data-en="Privacy" data-fr="Confidentialité">Privacy</a><a href="#" data-en="Legal Notice" data-fr="Mentions légales">Legal Notice</a></div>
 </footer>
 
 <script>
 let lang = 'en';
-document.querySelector('.nav-lang').addEventListener('click', function() {
+
+function toggleLang() {
   lang = lang === 'en' ? 'fr' : 'en';
-  this.innerHTML = lang === 'en' ? '<span>EN</span> · FR' : 'EN · <span>FR</span>';
-});
+  applyLang();
+}
+
+function applyLang() {
+  // Boutons langue
+  document.getElementById('lang-en').className = lang==='en'?'active':'';
+  document.getElementById('lang-fr').className = lang==='fr'?'active':'';
+  document.getElementById('lang-en-m').className = lang==='en'?'active':'';
+  document.getElementById('lang-fr-m').className = lang==='fr'?'active':'';
+
+  // Tous les éléments avec data-en / data-fr
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const txt = el.getAttribute('data-'+lang);
+    if (!txt) return;
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      el.placeholder = el.getAttribute('data-placeholder-'+lang) || txt;
+    } else {
+      el.innerHTML = txt;
+    }
+  });
+
+  // Placeholders
+  document.querySelectorAll('[data-placeholder-en]').forEach(el => {
+    el.placeholder = el.getAttribute('data-placeholder-'+lang);
+  });
+
+  // Options select
+  document.querySelectorAll('select option[data-en]').forEach(opt => {
+    opt.textContent = opt.getAttribute('data-'+lang);
+  });
+}
+
+function openMenu() { document.getElementById('mobile-menu').classList.add('open'); }
+function closeMenu() { document.getElementById('mobile-menu').classList.remove('open'); }
+
 function handleSubmit(e) {
   e.preventDefault();
   const btn = e.target.querySelector('.form-submit');
-  btn.textContent = lang === 'en' ? 'Enquiry received — we will be in touch.' : 'Demande reçue — nous vous contacterons.';
+  btn.textContent = lang==='en' ? 'Enquiry received — we will be in touch.' : 'Demande reçue — nous vous contacterons.';
   btn.style.background = 'var(--green)';
   btn.style.color = 'var(--navy)';
   btn.disabled = true;
