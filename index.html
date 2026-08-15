@@ -88,8 +88,8 @@ header.barre.ouvert .langues button[aria-pressed="true"]{color:var(--ivoire)}
   padding:clamp(110px,16vh,170px) 0 clamp(80px,12vh,120px)}
 .marque{margin:0}
 .marque img{width:clamp(210px,26vw,340px);height:auto;
-  opacity:0;transform:translateY(12px);animation:lever 1.1s cubic-bezier(.2,.7,.2,1) .06s forwards}
-@keyframes lever{to{opacity:1;transform:none}}
+  animation:lever 1.1s cubic-bezier(.2,.7,.2,1) .06s both}
+@keyframes lever{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .heros .lieu{font-family:var(--caps);font-weight:300;font-size:9.5px;letter-spacing:.42em;
   text-transform:uppercase;color:rgba(251,250,247,.6);margin-top:clamp(20px,3vh,30px);
   padding-left:.42em}
@@ -259,8 +259,8 @@ footer{padding:48px 0 56px;border-top:1px solid var(--hairline);text-align:cente
   text-align:justify;text-align-last:center;hyphens:auto}
 
 /* ————— apparition ————— */
-.rev{opacity:0;transform:translateY(16px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
-.rev.vu{opacity:1;transform:none}
+html.js .rev{opacity:0;transform:translateY(16px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+html.js .rev.vu{opacity:1;transform:none}
 
 @media(max-width:940px){
   .poles{grid-template-columns:1fr 1fr}
@@ -279,8 +279,8 @@ footer{padding:48px 0 56px;border-top:1px solid var(--hairline);text-align:cente
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .rev{opacity:1;transform:none}
-  .revue .etat{opacity:1;transform:none}
+  html.js .rev,html.js .rev.vu{opacity:1;transform:none}
+  .revue .etat,.marque img{opacity:1;transform:none}
 }
 
 /* ————— planche des actifs ————— */
@@ -735,6 +735,7 @@ footer{padding:48px 0 56px;border-top:1px solid var(--hairline);text-align:cente
   </div>
 </footer>
 
+<script>document.documentElement.className+=" js";</script>
 <script>
 (function(){
 "use strict";
@@ -803,6 +804,14 @@ if("IntersectionObserver" in window){
 } else {
   document.querySelectorAll(".rev").forEach(function(e){ e.classList.add("vu"); });
 }
+window.addEventListener("load", function(){
+  setTimeout(function(){
+    document.querySelectorAll(".rev:not(.vu)").forEach(function(e){
+      var r=e.getBoundingClientRect();
+      if(r.top < window.innerHeight * 1.4) e.classList.add("vu");
+    });
+  }, 900);
+});
 })();
 </script>
 </body>
